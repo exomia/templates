@@ -1,0 +1,24 @@
+{
+  "name": "action-template-release-builder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "ncc build index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/exomia/action-template-release-builder.git"
+  },
+  "author": "exomia",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/exomia/action-template-release-builder/issues"
+  },
+  "homepage": "https://github.com/exomia/action-template-release-builder#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0",
+    "@vercel/ncc": "^0.24.1"
+  }
+}

@@ -1,0 +1,30 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Exomia.Framework.Template</Name>
+    <Description>The template project for building games and more with the Exomia.Framework.</Description>
+    <ProjectType>CSharp</ProjectType>
+	<LanguageTag>C#</LanguageTag>
+	<PlatformTag>Windows</PlatformTag>
+	<ProjectTypeTag>Games</ProjectTypeTag>
+	<ProjectTypeTag>Desktop</ProjectTypeTag>
+	<ProjectTypeTag>Exomia</ProjectTypeTag>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>MyFirstGame</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.png</Icon>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="$safeprojectname$.csproj" File="Exomia.Framework.Template.csproj" ReplaceParameters="true">
+      <Folder Name="Content" TargetFolderName="Content" />
+      <ProjectItem ReplaceParameters="true" TargetFileName="MyGame.cs">MyGame.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Program.cs">Program.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

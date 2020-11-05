@@ -1,0 +1,35 @@
+name: Build VS-Templates & VSIX
+on:
+  release:
+    types:
+      - created
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: extract tag version
+        run: echo ::set-env name=TAG_VERSION::${GITHUB_REF#refs/tags/v*}
+        shell: bash
+      - name: change 'source.extension.vsixmanifest' version to ${{ env.TAG_VERSION }} 
+        run: | 
+            (Get-Content .\src\Exomia.Templates\template.source.extension.vsixmanifest) -replace '\$\$VERSION\$\$','${{ env.TAG_VERSION }}' |
+             Out-File .\src\Exomia.Templates\source.extension.vsixmanifest -Encoding utf8
+        shell: powershell
+      - name: Generate Archives
+        run: | 
+          Get-ChildItem -Path .\vs-templates\*\*\ -Directory |
+          ForEach { Get-ChildItem -Path $_.FullName -Recurse |
+          Compress-Archive -DestinationPath ".\vs-templates\$($_.Parent.Name)\$($_.Name).zip" -Force; "[Compress-Archive] vs-templates\$($_.Parent.Name)\$($_.Name).zip" }
+        shell: powershell
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.0.2
+      - name: Run msbuild
+        run: msbuild -p:OutputPath="${{ github.workspace }}\.out"
+        shell: powershell
+      - uses: ./.github/actions/template-release-builder
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          release_id: ${{ github.event.release.id }}
+        env:
+          GITHUB_TOKEN: '${{secrets.GITHUB_TOKEN}}'

@@ -1,0 +1,9 @@
+name: "action-template-release-builder"
+inputs:
+  release_id:
+    required: true
+  upload_url:
+    required: true
+runs:
+  using: "node12"
+  main: "dist/index.js"
