@@ -51,10 +51,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Exomia.Framework" Version="1.4.1-debug.5" />
+    <PackageReference Include="Exomia.Framework" Version="1.5.0" />
   </ItemGroup>
   
   <ItemGroup Condition="'$(Platform)'!='AnyCPU'">
-    <PackageReference Include="Exomia.Framework.$(Platform)" Version="1.4.1-debug.5" />
+    <PackageReference Include="Exomia.Framework.$(Platform)" Version="1.5.0" />
   </ItemGroup>
 </Project>
