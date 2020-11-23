@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: extract tag version
-        run: echo ::set-env name=TAG_VERSION::${GITHUB_REF#refs/tags/v*}
+        run: echo "TAG_VERSION=${GITHUB_REF#refs/tags/v*}" >> $GITHUB_ENV
         shell: bash
       - name: change 'source.extension.vsixmanifest' version to ${{ env.TAG_VERSION }} 
         run: | 
